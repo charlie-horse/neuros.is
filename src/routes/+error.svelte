@@ -45,8 +45,8 @@
 	.code :global(.spray--strike) {
 		position: absolute;
 		top: 35%;
-		left: -5%;
-		width: 110%;
+		left: 0;
+		width: 100%;
 		height: 0.35em;
 	}
 
@@ -71,5 +71,11 @@
 		align-items: center;
 		gap: 1rem 1.5rem;
 		margin-top: 2rem;
+	}
+
+	.more a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
 	}
 </style>

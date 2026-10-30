@@ -71,7 +71,14 @@
 	.card-wrap {
 		overflow: clip;
 		padding: 0.5rem;
-		margin: 0 -0.5rem;
+	}
+
+	/* On wider screens let the rotated card's slack reach into the gutter so its
+	   edge lines up with the column; on phones it stays inside the 16px gutter. */
+	@media (min-width: 40rem) {
+		.card-wrap {
+			margin-inline: -0.5rem;
+		}
 	}
 
 	.card {
@@ -130,7 +137,7 @@
 
 	.row {
 		display: grid;
-		grid-template-columns: 5.5rem 1fr;
+		grid-template-columns: 4.5rem 1fr;
 		align-items: baseline;
 		gap: 0.25rem 0.5rem;
 		padding-block: 0.35rem;
@@ -144,7 +151,8 @@
 	dd {
 		margin: 0;
 		min-width: 0;
-		overflow-wrap: anywhere;
+		overflow-wrap: break-word;
+		hyphens: none;
 	}
 
 	@media (max-width: 22.5rem) {

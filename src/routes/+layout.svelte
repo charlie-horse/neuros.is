@@ -94,14 +94,15 @@
 		position: relative;
 	}
 
-	/* graffiti-pink spray dot sitting on the "i" */
+	/* graffiti-pink spray dot sitting on the "i", covering its tittle.
+	   Centred on the i's tittle (measured at ~0.44em / 0.5em into ".is"); tune here if the font changes. */
 	.tld::after {
 		content: '';
 		position: absolute;
-		top: 0.05em;
-		right: 0.02em;
-		width: 6px;
-		height: 6px;
+		top: calc(0.5em - 3.5px);
+		left: calc(0.44em - 3.5px);
+		width: 7px;
+		height: 7px;
 		border-radius: 50%;
 		background: var(--accent-3);
 	}
@@ -130,6 +131,19 @@
 
 	nav a[aria-current='page'] {
 		color: var(--text);
+	}
+
+	/* Forced colors hides the spray underline, so mark the current page another way. */
+	@media (forced-colors: active) {
+		/* the dot would be painted Canvas and erase the real tittle */
+		.tld::after {
+			display: none;
+		}
+		nav a[aria-current='page'] {
+			text-decoration: underline;
+			text-decoration-thickness: 3px;
+			text-underline-offset: 0.3em;
+		}
 	}
 
 	nav a :global(.spray) {
