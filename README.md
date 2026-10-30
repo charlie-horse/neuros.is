@@ -9,6 +9,13 @@ npm install
 npm run dev
 ```
 
+## Editing content
+
+- **Copy and links:** everything editable (bio placeholder, /now items and date, status lines, nav, contact details) lives in [`src/lib/site.ts`](src/lib/site.ts).
+- **Theme:** colour and type tokens (light + dark) are CSS custom properties in [`src/lib/styles/global.css`](src/lib/styles/global.css).
+- **Pages:** `src/routes/` (`/`, `/about`, `/now`, `/contact`, and `+error.svelte` for the 404).
+- Fonts are self-hosted via `@fontsource` packages; the site makes no third-party requests and is `noindex, nofollow`.
+
 ## Build
 
 ```sh
