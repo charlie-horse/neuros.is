@@ -11,9 +11,12 @@
 	color-scheme: light dark;
 
 	/* type */
-	--font-sans: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, -apple-system,
-		'Segoe UI', Roboto, sans-serif;
-	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+	--font-sans:
+		'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui,
+		-apple-system, 'Segoe UI', Roboto, sans-serif;
+	--font-mono:
+		'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas,
+		monospace;
 
 	--step--1: 0.875rem;
 	--step-0: 1.0625rem;
@@ -120,16 +123,8 @@ a {
 	color: var(--accent-ink);
 	text-decoration-line: underline;
 	text-decoration-color: var(--accent);
-	text-decoration-thickness: 2px;
+	text-decoration-thickness: 1px;
 	text-underline-offset: 0.18em;
-}
-
-@media (hover: hover) {
-	/* the "spray swipe" — 50% turquoise keeps light-mode text contrast */
-	a:hover {
-		text-decoration-thickness: 0.4em;
-		text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
-	}
 }
 
 /* ── focus & selection ─────────────────────────────────── */

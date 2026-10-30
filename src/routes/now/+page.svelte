@@ -1,15 +1,17 @@
 <script lang="ts">
-	import { site } from '#lib/site.ts';
-	import PageHeader from '#lib/components/PageHeader.svelte';
-	import Stencil from '#lib/components/Stencil.svelte';
+	import { site } from '#lib/site.ts'
+	import PageHeader from '#lib/components/PageHeader.svelte'
+	import Stencil from '#lib/components/Stencil.svelte'
 
 	// Explicit UTC so the prerendered string matches what hydration computes.
-	const formatted = new Date(site.now.updated + 'T00:00:00Z').toLocaleDateString('en-GB', {
+	const formatted = new Date(
+		site.now.updated + 'T00:00:00Z'
+	).toLocaleDateString('en-GB', {
 		day: 'numeric',
 		month: 'long',
 		year: 'numeric',
 		timeZone: 'UTC'
-	});
+	})
 </script>
 
 <svelte:head>
@@ -18,7 +20,9 @@
 
 <PageHeader kicker={site.now.kicker} title="Now" lead={site.now.lead} />
 
-<p class="label updated">Last updated <time datetime={site.now.updated}>{formatted}</time></p>
+<p class="label updated">
+	Last updated <time datetime={site.now.updated}>{formatted}</time>
+</p>
 
 <ol class="now-list">
 	{#each site.now.items as item, idx (item)}

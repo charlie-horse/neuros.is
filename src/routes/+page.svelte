@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { site } from '#lib/site.ts';
-	import SprayMark from '#lib/components/SprayMark.svelte';
-	import StatusBoard from '#lib/components/StatusBoard.svelte';
-	import Poster from '#lib/components/Poster.svelte';
-	import Slab from '#lib/components/Slab.svelte';
+	import { site } from '#lib/site.ts'
+	import StatusBoard from '#lib/components/StatusBoard.svelte'
+	import Poster from '#lib/components/Poster.svelte'
+	import Slab from '#lib/components/Slab.svelte'
 </script>
 
 <svelte:head>
@@ -14,12 +13,16 @@
 	<div class="hero-text">
 		<p class="label rust">{site.home.kicker}</p>
 		<h1 id="hero-title" class="wordmark-xl">
-			neuros<span class="tld">.is<SprayMark variant="tag" /></span>
+			neuros<span class="tld">.is</span>
 		</h1>
 		<p class="lead">{site.home.lead}</p>
 		<StatusBoard />
 	</div>
-	<Poster src={site.avatar} alt={site.avatarAlt} caption={site.home.posterCaption} />
+	<Poster
+		src={site.avatar}
+		alt={site.avatarAlt}
+		caption={site.home.posterCaption}
+	/>
 </section>
 
 <h2 class="visually-hidden">Sections</h2>

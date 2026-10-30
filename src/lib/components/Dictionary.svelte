@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { site } from '#lib/site.ts';
+	import { site } from '#lib/site.ts'
 
-	let { senses, start = 1 }: { senses: readonly string[]; start?: number } = $props();
+	let { senses, start = 1 }: { senses: readonly string[]; start?: number } =
+		$props()
 
-	const d = site.dictionary;
+	const d = site.dictionary
 </script>
 
 <div class="dict">
@@ -46,7 +47,12 @@
 	   avoids fetching the extra latin-ext font file just for this one line. */
 	.pron {
 		color: var(--muted);
-		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+		font-family:
+			system-ui,
+			-apple-system,
+			'Segoe UI',
+			Roboto,
+			sans-serif;
 	}
 
 	.pos {

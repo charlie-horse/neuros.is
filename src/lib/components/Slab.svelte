@@ -1,12 +1,17 @@
 <script lang="ts">
-	let { n, href, title, blurb }: { n: string; href: string; title: string; blurb: string } =
-		$props();
+	let {
+		n,
+		href,
+		title,
+		blurb
+	}: { n: string; href: string; title: string; blurb: string } = $props()
 </script>
 
 <li>
 	<a class="slab" {href}>
 		<span class="label rust num">{n}</span>
-		<span class="slab-title">{title} <span aria-hidden="true">→</span></span>
+		<span class="slab-title">{title} <span aria-hidden="true">→</span></span
+		>
 		<span class="blurb">{blurb}</span>
 	</a>
 </li>
@@ -52,7 +57,8 @@
 			text-decoration: none;
 		}
 		.slab:hover .slab-title {
-			text-decoration: underline 0.3em color-mix(in srgb, var(--accent) 60%, transparent);
+			text-decoration: underline 0.3em
+				color-mix(in srgb, var(--accent) 60%, transparent);
 			text-underline-offset: 0.1em;
 		}
 	}

@@ -1,32 +1,32 @@
 <script lang="ts">
-	import { site } from '#lib/site.ts';
+	import { site } from '#lib/site.ts'
 
-	let mounted = $state(false);
-	let canCopy = $state(false);
-	let copied = $state(false);
-	let label = $state('Copy email');
-	let timer: ReturnType<typeof setTimeout> | undefined;
+	let mounted = $state(false)
+	let canCopy = $state(false)
+	let copied = $state(false)
+	let label = $state('Copy email')
+	let timer: ReturnType<typeof setTimeout> | undefined
 
 	$effect(() => {
-		mounted = true;
-		canCopy = typeof navigator !== 'undefined' && 'clipboard' in navigator;
-		return () => clearTimeout(timer);
-	});
+		mounted = true
+		canCopy = typeof navigator !== 'undefined' && 'clipboard' in navigator
+		return () => clearTimeout(timer)
+	})
 
 	async function copy() {
-		clearTimeout(timer);
+		clearTimeout(timer)
 		try {
-			await navigator.clipboard.writeText(site.email);
-			copied = true;
-			label = 'Copied ✓';
+			await navigator.clipboard.writeText(site.email)
+			copied = true
+			label = 'Copied ✓'
 		} catch {
-			copied = false;
-			label = 'Couldn’t copy';
+			copied = false
+			label = 'Couldn’t copy'
 		}
 		timer = setTimeout(() => {
-			copied = false;
-			label = 'Copy email';
-		}, 2000);
+			copied = false
+			label = 'Copy email'
+		}, 2000)
 	}
 </script>
 
@@ -56,12 +56,19 @@
 		</dl>
 
 		<div class="actions">
-			<a class="btn btn-primary" href={site.vcard} download="charlie-syvertsen.vcf" rel="external"
-				>Save contact card (.vcf)</a
+			<a
+				class="btn btn-primary"
+				href={site.vcard}
+				download="charlie-syvertsen.vcf"
+				rel="external">Save contact card (.vcf)</a
 			>
 			{#if mounted && canCopy}
-				<button class="btn btn-secondary" type="button" onclick={copy}>{label}</button>
-				<span class="visually-hidden" aria-live="polite">{copied ? 'Email address copied.' : ''}</span>
+				<button class="btn btn-secondary" type="button" onclick={copy}
+					>{label}</button
+				>
+				<span class="visually-hidden" aria-live="polite"
+					>{copied ? 'Email address copied.' : ''}</span
+				>
 			{/if}
 		</div>
 	</article>
@@ -91,16 +98,6 @@
 		box-shadow:
 			var(--slab-highlight),
 			0 12px 30px -16px var(--shadow);
-		transform: rotate(1deg);
-	}
-
-	@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-		.card {
-			transition: transform 300ms ease;
-		}
-		.card:hover {
-			transform: rotate(0);
-		}
 	}
 
 	.top {

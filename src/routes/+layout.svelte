@@ -1,20 +1,18 @@
 <script lang="ts">
-	import '@fontsource-variable/bricolage-grotesque/wght.css';
-	import '@fontsource/ibm-plex-mono/latin-500.css';
-	import '#lib/styles/global.css';
-	import favicon from '#lib/assets/favicon.svg';
-	import { site } from '#lib/site.ts';
-	import { page } from '$app/state';
-	import SprayDefs from '#lib/components/SprayDefs.svelte';
-	import SprayMark from '#lib/components/SprayMark.svelte';
-	import type { LayoutProps } from './$types';
+	import '@fontsource-variable/bricolage-grotesque/wght.css'
+	import '@fontsource/ibm-plex-mono/latin-500.css'
+	import '#lib/styles/global.css'
+	import favicon from '#lib/assets/favicon.svg'
+	import { site } from '#lib/site.ts'
+	import { page } from '$app/state'
+	import type { LayoutProps } from './$types'
 
-	let { children }: LayoutProps = $props();
+	let { children }: LayoutProps = $props()
 
-	const year = new Date().getFullYear();
+	const year = new Date().getFullYear()
 
 	const isCurrent = (href: string) =>
-		page.url.pathname === href || page.url.pathname.startsWith(href + '/');
+		page.url.pathname === href || page.url.pathname.startsWith(href + '/')
 </script>
 
 <svelte:head>
@@ -23,17 +21,23 @@
 </svelte:head>
 
 <a class="skip btn btn-primary" href="#main">Skip to content</a>
-<SprayDefs />
 
 <div class="site">
 	<header class="container site-header">
-		<a class="wordmark" href="/" aria-label="neuros.is, home">neuros<span class="tld">.is</span></a>
+		<a class="wordmark" href="/" aria-label="neuros.is, home"
+			>neuros<span class="tld">.is</span></a
+		>
 		<nav aria-label="Primary">
 			<ul>
 				{#each site.nav as item (item.href)}
 					<li>
-						<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-							{item.label}{#if isCurrent(item.href)}<SprayMark variant="underline" still />{/if}
+						<a
+							href={item.href}
+							aria-current={isCurrent(item.href)
+								? 'page'
+								: undefined}
+						>
+							{item.label}{#if isCurrent(item.href)}{/if}
 						</a>
 					</li>
 				{/each}
@@ -50,7 +54,11 @@
 		<ul class="footer-links">
 			<li><a href="mailto:{site.email}">{site.email}</a></li>
 			<li><a href={site.github}>GitHub</a></li>
-			<li><a href={site.vcard} download rel="external">Save contact (.vcf)</a></li>
+			<li>
+				<a href={site.vcard} download rel="external"
+					>Save contact (.vcf)</a
+				>
+			</li>
 		</ul>
 		<p class="label">{site.tagline}</p>
 	</footer>
@@ -92,19 +100,6 @@
 	.tld {
 		color: var(--accent-ink);
 		position: relative;
-	}
-
-	/* graffiti-pink spray dot sitting on the "i", covering its tittle.
-	   Centred on the i's tittle (measured at ~0.44em / 0.5em into ".is"); tune here if the font changes. */
-	.tld::after {
-		content: '';
-		position: absolute;
-		top: calc(0.5em - 3.5px);
-		left: calc(0.44em - 3.5px);
-		width: 7px;
-		height: 7px;
-		border-radius: 50%;
-		background: var(--accent-3);
 	}
 
 	nav ul {

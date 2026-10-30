@@ -1,30 +1,41 @@
 <script lang="ts">
-	import { site } from '#lib/site.ts';
+	import { site } from '#lib/site.ts'
 
-	const lines = site.statusLines;
+	const lines = site.statusLines
 
-	let i = $state(0);
-	let turns = $state(0);
-	let mounted = $state(false);
+	let i = $state(0)
+	let turns = $state(0)
+	let mounted = $state(false)
 
 	// Runs only in the browser: the button is a JS-only enhancement.
 	$effect(() => {
-		mounted = true;
-	});
+		mounted = true
+	})
 
-	function overthink() {
-		i = (i + 1) % lines.length;
-		turns++;
+	function draft() {
+		i = (i + 1) % lines.length
+		turns++
 	}
 </script>
 
 <div class="status">
-	<p class="chip" aria-live="polite"><span class="label">Status:</span> {lines[i]}</p>
+	<p class="chip" aria-live="polite">
+		<span class="label">Status:</span>
+		{lines[i]}
+	</p>
 	{#if mounted}
-		<button type="button" class="btn btn-secondary overthink" onclick={overthink}>
-			Overthink it <span class="spin" aria-hidden="true" style:--turns={turns}>↻</span>
+		<button
+			type="button"
+			class="btn btn-secondary overthink"
+			onclick={draft}
+		>
+			Draft <span class="spin" aria-hidden="true" style:--turns={turns}
+				>↻</span
+			>
 		</button>
-		<span class="label draft" aria-hidden="true">Draft {turns + 1} of ∞</span>
+		<span class="label draft" aria-hidden="true"
+			>Draft {turns + 1} of ∞</span
+		>
 	{/if}
 </div>
 
